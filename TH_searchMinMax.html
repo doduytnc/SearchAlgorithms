@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Min Max</title>
+</head>
+<body>
+<script>
+    var CArray = function (numElements) {
+        this.dataStore = [];
+        this.numElements = numElements;
+
+        this.setData = function () {
+            for (var i = 0; i < this.numElements; ++i) {
+                this.dataStore[i] = Math.floor(Math.random() * (this.numElements+1));
+            }
+        }
+
+        this.toString = function () {
+            var retstr = "";
+            for (var i = 0; i < this.dataStore.length; ++i) {
+                retstr += this.dataStore[i] + " ";
+                if(i>0 && i%10==0){
+                    retstr += "\n";
+                }
+            }
+            return retstr;
+        }
+
+        this.getMin = function () {
+            var min = this.dataStore[0];
+            for (var i = 1; i < this.dataStore.length; i++) {
+                if (this.dataStore[i] < min) {
+                    min = this.dataStore[i];
+                }
+            }
+            return min;
+        }
+
+        this.getMax = function () {
+            var max = this.dataStore[0];
+            for (var i = 1; i < this.dataStore.length; i++) {
+                if (this.dataStore[i] > max) {
+                    max = this.dataStore[i];
+                }
+            }
+            return max;
+        }
+
+    }
+
+    var numElements = 100;
+    var myNums = new CArray(numElements);
+    myNums.setData();
+    document.write("Random number chain: " +myNums.toString() +"<br>");
+    document.write("Min number: " +myNums.getMin()+"<br>");
+    document.write("Max number: " +myNums.getMax());
+</script>
+</body>
+</html>
